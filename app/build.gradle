@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    signingConfigs {
+        release {
+            storeFile file('keystore.ks')
+            storePassword 'afoaid'
+            keyAlias = 'key0'
+            keyPassword 'afoaid'
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.appsflyer.oaid.app"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName '1'
+        signingConfig signingConfigs.release
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions.jvmTarget = '1.8'
+    sourceSets.all { java.srcDir("src/$name/kotlin") }
+}
+dependencies {
+    implementation project(':oaid')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}

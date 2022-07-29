@@ -1,0 +1,11 @@
+build/
+local.properties
+*.iml
+.idea/*
+!.idea/dictionaries/
+gradlew*
+.gradle/
+gradle/*
+!gradle/wrapper
+gradle/wrapper/*
+!gradle/wrapper/gradle-wrapper.properties
